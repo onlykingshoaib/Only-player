@@ -1,0 +1,64 @@
+# Godot 4.3 .gitignore file
+# For "Only King" Battle Royale Project
+
+# Godot engine files
+.godot/
+.import/
+*.import
+user_data/
+
+# Cache directories
+__pycache__/
+*.pyc
+.cache/
+
+# IDE/Editor specific files
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build output
+build/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Editor specific
+.mono/
+.env
+.env.local
+mono_crash.json
+
+# Godot native plugins
+addons/
+
+# Test artifacts
+test_output/
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Project-specific exports
+export/
+*.apk
+*.ipa
+*.aab
+
+# Resource-specific (if you generate them)
+*.png.import
+*.jpg.import
+*.tres.import
+*.tscn.import
+
+# Exclude only the `.godot/` folder contents but keep the structure
+!.godot/.gitkeep

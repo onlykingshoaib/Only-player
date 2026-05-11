@@ -1,0 +1,209 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2m0rp2b6x0yc"]
+
+[ext_resource type="Script" path="res://scripts/MobileHUD.gd"]
+[ext_resource type="Theme" uid="uid://qyp0ry0p5gw3e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp2mq"]
+bg_color = Color(0.2, 0.2, 0.2, 0.8)
+border_color = Color(0, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q3d1"]
+bg_color = Color(0, 0.8, 1, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_action"]
+bg_color = Color(1, 0.3, 0.3, 0.7)
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_info"]
+font_size = 24
+
+[sub_resource type="CanvasGroup" id="CanvasGroup_1"]
+
+CanvasLayer {
+	script = SubResource("Script" path="res://scripts/MobileHUD.gd")
+	joystick_radius = 80.0
+	deadzone = 0.2
+	movement_speed_factor = 1.0
+	look_speed_factor = 1.0
+	
+	# Movement Joystick (Left)
+	Control {
+		name = "MovementJoystick"
+		layout_mode = 2
+		anchors_and_offsets_preset = 10
+		offset_left = 20.0
+		offset_top = -220.0
+		offset_right = 220.0
+		offset_bottom = -20.0
+		mouse_filter = 0
+		
+		Panel {
+			name = "Background"
+			layout_mode = 1
+			anchors_and_offsets_preset = 15
+			custom_minimum_size = Vector2(200, 200)
+			theme_override_styles/panel = SubResource("StyleBoxFlat_jp2mq")
+		}
+		
+		Panel {
+			name = "Knob"
+			layout_mode = 1
+			offset_left = 75.0
+			offset_top = 75.0
+			offset_right = 125.0
+			offset_bottom = 125.0
+			custom_minimum_size = Vector2(50, 50)
+			theme_override_styles/panel = SubResource("StyleBoxFlat_8q3d1")
+		}
+		
+		Label {
+			name = "Label"
+			layout_mode = 1
+			anchors_and_offsets_preset = 4
+			offset_left = 40.0
+			offset_top = 170.0
+			offset_right = 160.0
+			offset_bottom = 200.0
+			text = "MOVE"
+			label_settings = SubResource("LabelSettings_info")
+			horizontal_alignment = 1
+		}
+	}
+	
+	# Look Joystick (Right)
+	Control {
+		name = "LookJoystick"
+		layout_mode = 2
+		anchors_and_offsets_preset = 10
+		offset_left = -220.0
+		offset_top = -220.0
+		offset_right = -20.0
+		offset_bottom = -20.0
+		mouse_filter = 0
+		
+		Panel {
+			name = "Background"
+			layout_mode = 1
+			anchors_and_offsets_preset = 15
+			custom_minimum_size = Vector2(200, 200)
+			theme_override_styles/panel = SubResource("StyleBoxFlat_jp2mq")
+		}
+		
+		Panel {
+			name = "Knob"
+			layout_mode = 1
+			offset_left = 75.0
+			offset_top = 75.0
+			offset_right = 125.0
+			offset_bottom = 125.0
+			custom_minimum_size = Vector2(50, 50)
+			theme_override_styles/panel = SubResource("StyleBoxFlat_8q3d1")
+		}
+		
+		Label {
+			name = "Label"
+			layout_mode = 1
+			anchors_and_offsets_preset = 4
+			offset_left = 40.0
+			offset_top = 170.0
+			offset_right = 160.0
+			offset_bottom = 200.0
+			text = "LOOK"
+			label_settings = SubResource("LabelSettings_info")
+			horizontal_alignment = 1
+		}
+	}
+	
+	# Action Buttons
+	HBoxContainer {
+		name = "ActionButtons"
+		layout_mode = 2
+		anchors_and_offsets_preset = 11
+		offset_left = -450.0
+		offset_top = -120.0
+		offset_right = -20.0
+		offset_bottom = -20.0
+		separation = 10
+		
+		Button {
+			name = "JumpButton"
+			layout_mode = 2
+			size_flags_horizontal = 3
+			size_flags_vertical = 3
+			text = "JUMP"
+			theme_override_styles/normal = SubResource("StyleBoxFlat_action")
+			custom_minimum_size = Vector2(100, 100)
+		}
+		
+		Button {
+			name = "AimButton"
+			layout_mode = 2
+			size_flags_horizontal = 3
+			size_flags_vertical = 3
+			text = "AIM"
+			theme_override_styles/normal = SubResource("StyleBoxFlat_action")
+			custom_minimum_size = Vector2(100, 100)
+		}
+		
+		Button {
+			name = "ShootButton"
+			layout_mode = 2
+			size_flags_horizontal = 3
+			size_flags_vertical = 3
+			text = "SHOOT"
+			theme_override_styles/normal = SubResource("StyleBoxFlat_action")
+			custom_minimum_size = Vector2(100, 100)
+		}
+		
+		CheckButton {
+			name = "SprintButton"
+			layout_mode = 2
+			size_flags_horizontal = 3
+			size_flags_vertical = 3
+			text = "SPRINT"
+			theme_override_styles/normal = SubResource("StyleBoxFlat_action")
+			custom_minimum_size = Vector2(100, 100)
+		}
+	}
+	
+	# Info Panel (Top)
+	PanelContainer {
+		name = "InfoPanel"
+		layout_mode = 2
+		anchors_and_offsets_preset = 1
+		offset_left = 20.0
+		offset_top = 20.0
+		offset_right = -20.0
+		offset_bottom = 120.0
+		theme_override_styles/panel = SubResource("StyleBoxFlat_jp2mq")
+		
+		VBoxContainer {
+			layout_mode = 2
+			
+			Label {
+				name = "HealthLabel"
+				layout_mode = 2
+				text = "HP: 100%"
+				label_settings = SubResource("LabelSettings_info")
+			}
+			
+			Label {
+				name = "AmmoLabel"
+				layout_mode = 2
+				text = "AMMO: 300"
+				label_settings = SubResource("LabelSettings_info")
+			}
+			
+			Label {
+				name = "ZoneInfoLabel"
+				layout_mode = 2
+				text = "ZONE: 200m | 300s"
+				label_settings = SubResource("LabelSettings_info")
+			}
+		}
+	}
+}
