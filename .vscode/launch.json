@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Godot 4.3 Debug",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}",
+            "port": 6006,
+            "address": "127.0.0.1",
+            "launch_game_instance": true,
+            "launch_scene": false,
+            "preLaunchTask": "godot: build"
+        },
+        {
+            "name": "Godot 4.3 Play Scene",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}",
+            "port": 6006,
+            "address": "127.0.0.1",
+            "launch_game_instance": true,
+            "launch_scene": true
+        },
+        {
+            "name": "Godot 4.3 Editor",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceFolder}",
+            "port": 6006,
+            "address": "127.0.0.1",
+            "launch_game_instance": false,
+            "launch_scene": false
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Godot: Debug & Play",
+            "configurations": ["Godot 4.3 Debug", "Godot 4.3 Play Scene"]
+        }
+    ]
+}
